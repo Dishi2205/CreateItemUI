@@ -24,15 +24,7 @@ const ItemForm = ({ onItemCreated }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    if (name === 'actualPrice' && value.length > 4) {
-      alert('Cannot enter more than 4 digits');
-      return;
-    }
-    if (name === 'listingPrice' && value.length > 4) {
-      alert('Cannot enter more than 4 digits');
-      return; 
-    }
-    if (name === 'sellingPrice' && value.length > 4) {
+    if (['actualPrice', 'listingPrice', 'sellingPrice'].includes(name) && value.length > 4) {
       alert('Cannot enter more than 4 digits');
       return;
     }
@@ -71,112 +63,127 @@ const ItemForm = ({ onItemCreated }) => {
   return (
     <div className="form-container">
       <div className="form-wrapper">
-        <h2>Create a new item</h2>
+        <h2>Create a New Item</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group-inline">
-            <label>Actual Price:</label>
-            <input
-              type="number"
-              name="actualPrice"
-              value={formData.actualPrice}
-              onChange={handleChange}
-              maxLength="4"
-              required
-            />
-          
-            <label>Listing Price:</label>
-            <input
-              type="number"
-              name="listingPrice"
-              value={formData.listingPrice}
-              onChange={handleChange}
-              maxLength="4"
-              required
-            />
+            <div>
+              <label>Actual Price:</label>
+              <input
+                type="number"
+                name="actualPrice"
+                value={formData.actualPrice}
+                onChange={handleChange}
+                maxLength="4"
+                required
+              />
+            </div>
+            <div>
+              <label>Listing Price:</label>
+              <input
+                type="number"
+                name="listingPrice"
+                value={formData.listingPrice}
+                onChange={handleChange}
+                maxLength="4"
+                required
+              />
+            </div>
           </div>
           <div className="form-group-inline">
-            <label>Selling Price:</label>
-            <input
-              type="number"
-              name="sellingPrice"
-              value={formData.sellingPrice}
-              onChange={handleChange}
-              maxLength="4"
-              required
-            />
-          
-            <label>Event Venues ID:</label>
-            <input
-              type="number"
-              name="eventVenuesID"
-              value={formData.eventVenuesID}
-              onChange={handleChange}
-              required
-            />
+            <div>
+              <label>Selling Price:</label>
+              <input
+                type="number"
+                name="sellingPrice"
+                value={formData.sellingPrice}
+                onChange={handleChange}
+                maxLength="4"
+                required
+              />
+            </div>
+            <div>
+              <label>Event Venues ID:</label>
+              <input
+                type="number"
+                name="eventVenuesID"
+                value={formData.eventVenuesID}
+                onChange={handleChange}
+                required
+              />
+            </div>
           </div>
 
           <div className="form-group-inline">
-            <label>Orders ID:</label>
-            <input
-              type="number"
-              name="ordersID"
-              value={formData.ordersID}
-              onChange={handleChange}
-              required
-            />
-          
-            <label>Seller ID:</label>
-            <input
-              type="number"
-              name="sellerID"
-              value={formData.sellerID}
-              onChange={handleChange}
-              required
-            />
+            <div>
+              <label>Orders ID:</label>
+              <input
+                type="number"
+                name="ordersID"
+                value={formData.ordersID}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label>Seller ID:</label>
+              <input
+                type="number"
+                name="sellerID"
+                value={formData.sellerID}
+                onChange={handleChange}
+                required
+              />
+            </div>
           </div>
 
           <div className="form-group-inline">
-            <label>Image URL:</label>
-            <input
-              type="text"
-              name="imageUrl"
-              value={formData.imageUrl}
-              onChange={handleChange}
-              required
-            />
-            {imageUrlError && <p className="error">{imageUrlError}</p>}
-         
-            <label>Status:</label>
-            <input
-              type="text"
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
-              required
-            />
+            <div>
+              <label>Image URL:</label>
+              <input
+                type="text"
+                name="imageUrl"
+                value={formData.imageUrl}
+                onChange={handleChange}
+                required
+              />
+              {imageUrlError && <p className="error">{imageUrlError}</p>}
+            </div>
+            <div>
+              <label>Status:</label>
+              <input
+                type="text"
+                name="status"
+                value={formData.status}
+                onChange={handleChange}
+                required
+              />
+            </div>
           </div>
 
           <div className="form-group-inline">
-            <label>Type :</label>
-            <input
-              type="text"
-              name="type"
-              value={formData.type}
-              onChange={handleChange}
-              required
-            />
-          
-            <label>Validated On:</label>
-            <input
-              type="text"
-              name="validatedOn"
-              value={formData.validatedOn}
-              onChange={handleChange}
-              required
-            />
+            <div>
+              <label>Type:</label>
+              <input
+                type="text"
+                name="type"
+                value={formData.type}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label>Validated On:</label>
+              <input
+                type="text"
+                name="validatedOn"
+                value={formData.validatedOn}
+                onChange={handleChange}
+                required
+              />
+            </div>
           </div>
-          <div>
-            <label>Comment : </label>
+          <div className="form-group">
+            <label>Comment:</label>
             <input
               type="text"
               name="comment"
@@ -186,8 +193,8 @@ const ItemForm = ({ onItemCreated }) => {
             />
           </div>
           
-          <div className="button">
-            <button type="submit">Create Item</button>
+          <div className="button-container">
+            <button type="submit" className="button">Create Item</button>
           </div>
         </form>
       </div>
